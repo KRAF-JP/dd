@@ -1,0 +1,33 @@
+<div>
+    <h3>Columns Information</h3>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>COLUMN</th>
+            <th>TYPE</th>
+            <th>Length</th>
+            <th>UNSIGNED</th>
+            <th>PRIMARY KEY</th>
+            <th>FOREIGN KEY</th>
+            <th>AUTOINCREMENT</th>
+            <th>NOT NULL</th>
+            <th>DEFAULT</th>
+            <th>COMMENT</th>
+        </tr>
+        @foreach($table['columns'] as $column)
+            <tr>
+                <td>{{$loop->iteration}}</td>
+                <td>{{$column->getName()}}</td>
+                <td>{{$column->getType()->getName()}}</td>
+                <td class="right">{{$column->getLength() ? $column->getLength() : ''}}</td>
+                <td class="center">{{$column->getUnsigned() === 1 ? '◯' : ''}}</td>
+                <td class="center">{{ in_array($column->getName(), $table['primaryKeys'], true) ? '◯' : '' }}</td>
+                <td class="center">{{ in_array($column->getName(), $table['localColumns'], true) ? '◯' : '' }}</td>
+                <td class="center">{{$column->getAutoincrement() ? '◯' : ''}}</td>
+                <td class="center">{{$column->getNotnull() ? '◯' : ''}}</td>
+                <td class="center">{{$column->getDefault() ?? '-'}}</td>
+                <td>{{$column->getComment()}}</td>
+            </tr>
+        @endforeach
+    </table>
+</div>

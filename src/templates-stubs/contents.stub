@@ -1,0 +1,56 @@
+@extends('dd.html.layout')
+
+@section('title')
+    {{$title}}
+@endsection
+
+@section('stylesheet')
+    <style>
+        body {
+            font-family: NotoSansJP, Noto Sans JP, sans-serif;
+        }
+
+        hr {
+            border: solid 1px #cccccc;
+            margin: 20px 0;
+        }
+
+        th {
+            border: solid 1px;
+            padding: 10px;
+            background-color: #cccccc;
+            text-align: center;
+        }
+
+        td {
+            border: solid 1px;
+            padding: 10px;
+            background-color: #ffffff;
+            text-align: left;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        .right {
+            text-align: right;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .left {
+            text-align: left;
+        }
+    </style>
+@endsection
+
+@section('contents')
+    @include('dd.html.table-list')
+    @include('dd.html.table-detail')
+
+    <hr>
+    published at: {{$createdAt}}
+@endsection

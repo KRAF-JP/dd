@@ -1,0 +1,19 @@
+<div>
+    <h3>Foreign Keys Information</h3>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>KEY NAME</th>
+            <th>LOCAL COLUMN</th>
+            <th>FOREIGN TABLE</th>
+        </tr>
+        @foreach($table['foreignKeys'] as $foreignKey)
+            <tr>
+                <td>{{$loop->iteration}}</td>
+                <td>{{$foreignKey['keyName']}}</td>
+                <td>{{implode($foreignKey['localColumn'], " , ")}}</td>
+                <td>{{$foreignKey['foreignTableName']}}</td>
+            </tr>
+        @endforeach
+    </table>
+</div>

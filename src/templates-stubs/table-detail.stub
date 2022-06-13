@@ -1,0 +1,21 @@
+
+@foreach($tables as $key => $table)
+    <hr>
+    <div>
+        <h2><a id="{{$table['name']}}">{{$table['name']}}</a></h2>
+    </div>
+
+    @include('dd.html.table-information')
+
+    @include('dd.html.table-columns')
+
+    @if(count($table['foreignKeys']) > 0)
+        @include('dd.html.table-foreign-keys')
+    @endif
+
+    @if(count($table['indexes']) > 0)
+        @include('dd.html.table-indexes')
+    @endif
+
+    <a href="#top">top</a>
+@endforeach

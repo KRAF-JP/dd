@@ -1,0 +1,22 @@
+<div>
+    <h3>Table Information</h3>
+    <table>
+        <tr>
+            <th>RDBMS</th>
+            <td>{{$databaseName}}</td>
+        </tr>
+        <tr>
+            <th>Table Name</th>
+            <td>{{$table['name']}}</td>
+        </tr>
+        <tr>
+            <th>Options</th>
+            <td>
+                Engine: {{$table['options']['engine']}}<br>
+                Collation: {{$table['options']['collation']}}<br>
+                Charset: {{$table['options']['charset']}}<br>
+                Comment: {{$table['options']['comment']}}
+            </td>
+        </tr>
+    </table>
+</div>

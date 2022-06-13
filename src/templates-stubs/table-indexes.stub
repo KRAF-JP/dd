@@ -1,0 +1,19 @@
+<div>
+    <h3>Indexes Information</h3>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>INDEX NAME</th>
+            <th>COLUMNS</th>
+            <th>UNIQUE</th>
+        </tr>
+        @foreach($table['indexes'] as $index)
+            <tr>
+                <td>{{$loop->iteration}}</td>
+                <td>{{$index->getName()}}</td>
+                <td>{{implode($index->getColumns(), " , ")}}</td>
+                <td class="center">{{$index->isUnique() ? '◯' : ''}}</td>
+            </tr>
+        @endforeach
+    </table>
+</div>

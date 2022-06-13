@@ -1,0 +1,20 @@
+<div>
+    <a id="top"><h1>Tables</h1></a>
+</div>
+<div>
+    <table>
+        <tr>
+            <th>#
+            </td>
+            <th>Table Name</th>
+            <th>Comment</th>
+        </tr>
+        @foreach($tables as $key => $table)
+            <tr>
+                <td>{{$key + 1}}</td>
+                <td><a href="#{{$table['name']}}">{{$table['name']}}</a></td>
+                <td>{{$table['comment']}}</td>
+            </tr>
+        @endforeach
+    </table>
+</div>
