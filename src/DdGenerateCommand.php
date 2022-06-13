@@ -57,6 +57,13 @@ class DdGenerateCommand extends Command
     protected function generateDocument(?string $conn): void
     {
         $schema = DB::connection($conn)->getDoctrineSchemaManager();
+        $databaseName = '';
+        foreach($schema->listDatabases() as $database) {
+            if ($database !== 'information_schema') {
+                $databaseName = $database;
+                exit;
+            }
+        }
         $tables = [];
         foreach ($schema->listTables() as $table) {
             $foreignKeys = $table->getForeignKeys();
@@ -89,7 +96,7 @@ class DdGenerateCommand extends Command
             'database-definition.html',
             view('dd.html.contents', [
                 'title' => 'テーブル定義書',
-                'databaseName' => $schema->listDatabases()[0],
+                'databaseName' => $databaseName,
                 'tables' => $tables,
                 'createdAt' => Carbon::now('Asia/Tokyo')
             ])->render()
