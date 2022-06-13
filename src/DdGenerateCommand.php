@@ -61,7 +61,7 @@ class DdGenerateCommand extends Command
         foreach($schema->listDatabases() as $database) {
             if ($database !== 'information_schema') {
                 $databaseName = $database;
-                exit;
+                break;
             }
         }
         $tables = [];
