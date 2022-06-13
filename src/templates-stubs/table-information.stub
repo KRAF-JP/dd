@@ -12,10 +12,18 @@
         <tr>
             <th>Options</th>
             <td>
-                Engine: {{$table['options']['engine']}}<br>
-                Collation: {{$table['options']['collation']}}<br>
-                Charset: {{$table['options']['charset']}}<br>
-                Comment: {{$table['options']['comment']}}
+                @if(isset($table['options']['engine']))
+                    Engine: {{$table['options']['engine']}}<br>
+                @endif
+                @if(isset($table['options']['collation']))
+                    Collation: {{$table['options']['collation']}}<br>
+                @endif
+                @if(isset($table['options']['charset']))
+                    Charset: {{$table['options']['charset']}}<br>
+                @endif
+                @if(isset($table['options']['comment']))
+                    Comment: {{$table['options']['comment']}}
+                @endif
             </td>
         </tr>
     </table>
