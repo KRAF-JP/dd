@@ -11,7 +11,7 @@
             <tr>
                 <td>{{$loop->iteration}}</td>
                 <td>{{$index->getName()}}</td>
-                <td>{{implode($index->getColumns(), " , ")}}</td>
+                <td>{{implode(" , ", $index->getColumns())}}</td>
                 <td class="center">{{$index->isUnique() ? '◯' : ''}}</td>
             </tr>
         @endforeach

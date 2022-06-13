@@ -11,7 +11,7 @@
             <tr>
                 <td>{{$loop->iteration}}</td>
                 <td>{{$foreignKey['keyName']}}</td>
-                <td>{{implode($foreignKey['localColumn'], " , ")}}</td>
+                <td>{{implode(" , ", $foreignKey['localColumn'])}}</td>
                 <td>{{$foreignKey['foreignTableName']}}</td>
             </tr>
         @endforeach
