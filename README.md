@@ -3,8 +3,9 @@
 ## Installation
 1. composer 
 ```shell
-compoer require --dev krafjp/dd
+composer require krafjp/dd
 ```
+
 2. register laravel app
 ``` php
     'providers' => [
@@ -17,7 +18,7 @@ compoer require --dev krafjp/dd
         Krafjp\Dd\DdServiceProvider::class,
     ];
 ```
-3. init command
+3. init dd command
 ```shell
 php artisan db:dd
 ```

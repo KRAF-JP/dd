@@ -1,6 +1,6 @@
 {
     "name": "krafjp/dd",
-    "description": "",
+    "description": "MySQL/MariaDB database definition document generator for laravel.",
     "license": "MIT",
     "authors": [
         {
