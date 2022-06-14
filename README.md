@@ -29,3 +29,6 @@ db:dd-gen [options] [--] [<conn>]
 ### Options:
 - -m, --output-md       output format markdown.(default html)
 
+## Samples
+- [laravel 8 default database schema generated at html by dd.](samples/database-definition.html)
+- [laravel 8 default database schema generated at markdown by dd.](samples/database-definition.md)
