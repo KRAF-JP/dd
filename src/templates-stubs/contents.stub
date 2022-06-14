@@ -5,7 +5,9 @@
 @endsection
 
 @section('stylesheet')
-    <style>
+<style>
+
+<!--
         body {
             font-family: NotoSansJP, Noto Sans JP, sans-serif;
         }
@@ -44,7 +46,9 @@
         .left {
             text-align: left;
         }
-    </style>
+
+ -->
+ </style>
 @endsection
 
 @section('contents')
