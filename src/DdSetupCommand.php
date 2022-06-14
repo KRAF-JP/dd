@@ -48,7 +48,7 @@ class DdSetupCommand extends Command
      *
      * @throws InvalidArgumentException
      */
-    public function handle()
+    public function handle(): void
     {
         $this->ensureDirectoriesExist();
         $this->exportViews();
@@ -73,7 +73,7 @@ class DdSetupCommand extends Command
      *
      * @return void
      */
-    protected function exportViews()
+    protected function exportViews(): void
     {
         foreach ($this->views as $key => $value) {
             if (file_exists($view = $this->getViewPath($value)) && !$this->option('force')) {
