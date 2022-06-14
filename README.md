@@ -1,29 +1,31 @@
 # krafjp/dd
 
 ## Installation
-1. composer 
+Database definition tool provided by kraf is located in the krafjp/dd Composer  package, which may be installed using Composer:
+
 ```shell
 composer require krafjp/dd
 ```
 
-2. register laravel app
-``` php
-    'providers' => [
 
-        /*
-         * Laravel Framework Service Providers...
-         */
- 
-        // add database definition provider
-        Krafjp\Dd\DdServiceProvider::class,
-    ];
-```
-3. init dd command
+## Export html(blade) template
 ```shell
-php artisan db:dd
+php artisan db:dd [--force]
 ```
 
-4. generate doc
+## publish database definition document
 ```shell
 php artisan db:dd-gen
 ```
+Generate Database Definition Document Command.
+
+### Usage:
+```
+db:dd-gen [options] [--] [<conn>]
+```
+
+### Arguments:
+- conn                  db connection null by default
+### Options:
+- -m, --output-md       output format markdown.(default html)
+
