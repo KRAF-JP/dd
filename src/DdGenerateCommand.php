@@ -10,6 +10,8 @@ use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Console\Command;
 use InvalidArgumentException;
+use League\HTMLToMarkdown\HtmlConverter;
+use League\HTMLToMarkdown\Converter\TableConverter;
 
 class DdGenerateCommand extends Command
 {
@@ -21,7 +23,13 @@ class DdGenerateCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'db:dd-gen {conn? : db connection null by default}';
+    protected $signature = 'db:dd-gen {conn? : db connection null by default} {--m | --output-md}';
+
+    /**
+     * @var HtmlConverter
+     */
+    private HtmlConverter $converter;
+
 
     /**
      * The console command description.
@@ -29,6 +37,16 @@ class DdGenerateCommand extends Command
      * @var string
      */
     protected $description = 'Generate Database Definition Document Commands';
+
+    function __construct(HtmlConverter $converter, TableConverter $tableConverter)
+    {
+        parent::__construct();
+        $this->converter = $converter;
+        $this->converter->getConfig()->setOption('strip_tags', true);
+        $this->converter->getConfig()->setOption('header_style', 'atx');
+        $this->converter->getConfig()->setOption('hard_break', false);
+        $this->converter->getEnvironment()->addConverter($tableConverter);
+    }
 
     /**
      * Execute the console command.
@@ -58,7 +76,7 @@ class DdGenerateCommand extends Command
     {
         $schema = DB::connection($conn)->getDoctrineSchemaManager();
         $databaseName = '';
-        foreach($schema->listDatabases() as $database) {
+        foreach ($schema->listDatabases() as $database) {
             if ($database !== 'information_schema') {
                 $databaseName = $database;
                 break;
@@ -92,14 +110,15 @@ class DdGenerateCommand extends Command
             ];
         }
 
-        file_put_contents(
-            'database-definition.html',
-            view('dd.html.contents', [
-                'title' => 'テーブル定義書',
-                'databaseName' => $databaseName,
-                'tables' => $tables,
-                'createdAt' => Carbon::now('Asia/Tokyo')
-            ])->render()
-        );
+        $html = view('dd.html.contents', [
+            'title' => 'テーブル定義書',
+            'databaseName' => $databaseName,
+            'tables' => $tables,
+            'createdAt' => Carbon::now('Asia/Tokyo')
+        ])->render();
+
+        $this->option('output-md') ?
+            file_put_contents('database-definition.md', $this->converter->convert($html))
+            : file_put_contents('database-definition.html', $html);
     }
 }
