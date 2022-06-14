@@ -1,0 +1,865 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>    テーブル定義書
+</title>
+    <style>
+
+<!--
+        body {
+            font-family: NotoSansJP, Noto Sans JP, sans-serif;
+        }
+
+        hr {
+            border: solid 1px #cccccc;
+            margin: 20px 0;
+        }
+
+        th {
+            border: solid 1px;
+            padding: 10px;
+            background-color: #cccccc;
+            text-align: center;
+        }
+
+        td {
+            border: solid 1px;
+            padding: 10px;
+            background-color: #ffffff;
+            text-align: left;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        .right {
+            text-align: right;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .left {
+            text-align: left;
+        }
+
+ -->
+ </style>
+</head>
+<body>
+
+<div class="container">
+        <div>
+    <h1><a id="top">Tables</a></h1>
+</div>
+<div>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>Table Name</th>
+            <th>Comment</th>
+        </tr>
+                    <tr>
+                <td>1</td>
+                <td><a href="#failed_jobs">failed_jobs</a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>2</td>
+                <td><a href="#migrations">migrations</a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>3</td>
+                <td><a href="#password_resets">password_resets</a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>4</td>
+                <td><a href="#personal_access_tokens">personal_access_tokens</a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>5</td>
+                <td><a href="#users">users</a></td>
+                <td></td>
+            </tr>
+            </table>
+</div>
+    <hr>
+
+    <div>
+        <h2><a id="failed_jobs">failed_jobs</a></h2>
+    </div>
+
+    <div>
+    <h3>Table Information</h3>
+    <table>
+        <tr>
+            <th>RDBMS</th>
+            <td>dd_dev_db</td>
+        </tr>
+        <tr>
+            <th>Table Name</th>
+            <td>failed_jobs</td>
+        </tr>
+        <tr>
+            <th>Options</th>
+            <td>
+                                    Engine: InnoDB<br />
+                                                    Collation: utf8mb4_unicode_ci<br />
+                                                    Charset: utf8mb4<br />
+                                                    Comment: 
+                            </td>
+        </tr>
+    </table>
+</div>
+
+    <div>
+    <h3>Columns Information</h3>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>COLUMN</th>
+            <th>TYPE</th>
+            <th>Length</th>
+            <th>UNSIGNED</th>
+            <th>PRIMARY KEY</th>
+            <th>FOREIGN KEY</th>
+            <th>AUTOINCREMENT</th>
+            <th>NOT NULL</th>
+            <th>DEFAULT</th>
+            <th>COMMENT</th>
+        </tr>
+                    <tr>
+                <td>1</td>
+                <td>id</td>
+                <td>bigint</td>
+                <td class="right"></td>
+                <td class="center"></td>
+                <td class="center">◯</td>
+                <td class="center"></td>
+                <td class="center">◯</td>
+                <td class="center">◯</td>
+                <td class="center">-</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>2</td>
+                <td>uuid</td>
+                <td>string</td>
+                <td class="right">255</td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center">◯</td>
+                <td class="center">-</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>3</td>
+                <td>connection</td>
+                <td>text</td>
+                <td class="right">65535</td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center">◯</td>
+                <td class="center">-</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>4</td>
+                <td>queue</td>
+                <td>text</td>
+                <td class="right">65535</td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center">◯</td>
+                <td class="center">-</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>5</td>
+                <td>payload</td>
+                <td>text</td>
+                <td class="right"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center">◯</td>
+                <td class="center">-</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>6</td>
+                <td>exception</td>
+                <td>text</td>
+                <td class="right"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center">◯</td>
+                <td class="center">-</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>7</td>
+                <td>failed_at</td>
+                <td>datetime</td>
+                <td class="right"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center">◯</td>
+                <td class="center">CURRENT_TIMESTAMP</td>
+                <td></td>
+            </tr>
+            </table>
+</div>
+    
+            <div>
+    <h3>Indexes Information</h3>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>INDEX NAME</th>
+            <th>COLUMNS</th>
+            <th>UNIQUE</th>
+        </tr>
+                    <tr>
+                <td>1</td>
+                <td>PRIMARY</td>
+                <td>id</td>
+                <td class="center">◯</td>
+            </tr>
+                    <tr>
+                <td>2</td>
+                <td>failed_jobs_uuid_unique</td>
+                <td>uuid</td>
+                <td class="center">◯</td>
+            </tr>
+            </table>
+</div>
+    
+    <div>
+        <a href="#top">top</a>
+    </div>
+
+
+    <hr>
+
+    <div>
+        <h2><a id="migrations">migrations</a></h2>
+    </div>
+
+    <div>
+    <h3>Table Information</h3>
+    <table>
+        <tr>
+            <th>RDBMS</th>
+            <td>dd_dev_db</td>
+        </tr>
+        <tr>
+            <th>Table Name</th>
+            <td>migrations</td>
+        </tr>
+        <tr>
+            <th>Options</th>
+            <td>
+                                    Engine: InnoDB<br />
+                                                    Collation: utf8mb4_unicode_ci<br />
+                                                    Charset: utf8mb4<br />
+                                                    Comment: 
+                            </td>
+        </tr>
+    </table>
+</div>
+
+    <div>
+    <h3>Columns Information</h3>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>COLUMN</th>
+            <th>TYPE</th>
+            <th>Length</th>
+            <th>UNSIGNED</th>
+            <th>PRIMARY KEY</th>
+            <th>FOREIGN KEY</th>
+            <th>AUTOINCREMENT</th>
+            <th>NOT NULL</th>
+            <th>DEFAULT</th>
+            <th>COMMENT</th>
+        </tr>
+                    <tr>
+                <td>1</td>
+                <td>id</td>
+                <td>integer</td>
+                <td class="right"></td>
+                <td class="center"></td>
+                <td class="center">◯</td>
+                <td class="center"></td>
+                <td class="center">◯</td>
+                <td class="center">◯</td>
+                <td class="center">-</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>2</td>
+                <td>migration</td>
+                <td>string</td>
+                <td class="right">255</td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center">◯</td>
+                <td class="center">-</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>3</td>
+                <td>batch</td>
+                <td>integer</td>
+                <td class="right"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center">◯</td>
+                <td class="center">-</td>
+                <td></td>
+            </tr>
+            </table>
+</div>
+    
+            <div>
+    <h3>Indexes Information</h3>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>INDEX NAME</th>
+            <th>COLUMNS</th>
+            <th>UNIQUE</th>
+        </tr>
+                    <tr>
+                <td>1</td>
+                <td>PRIMARY</td>
+                <td>id</td>
+                <td class="center">◯</td>
+            </tr>
+            </table>
+</div>
+    
+    <div>
+        <a href="#top">top</a>
+    </div>
+
+
+    <hr>
+
+    <div>
+        <h2><a id="password_resets">password_resets</a></h2>
+    </div>
+
+    <div>
+    <h3>Table Information</h3>
+    <table>
+        <tr>
+            <th>RDBMS</th>
+            <td>dd_dev_db</td>
+        </tr>
+        <tr>
+            <th>Table Name</th>
+            <td>password_resets</td>
+        </tr>
+        <tr>
+            <th>Options</th>
+            <td>
+                                    Engine: InnoDB<br />
+                                                    Collation: utf8mb4_unicode_ci<br />
+                                                    Charset: utf8mb4<br />
+                                                    Comment: 
+                            </td>
+        </tr>
+    </table>
+</div>
+
+    <div>
+    <h3>Columns Information</h3>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>COLUMN</th>
+            <th>TYPE</th>
+            <th>Length</th>
+            <th>UNSIGNED</th>
+            <th>PRIMARY KEY</th>
+            <th>FOREIGN KEY</th>
+            <th>AUTOINCREMENT</th>
+            <th>NOT NULL</th>
+            <th>DEFAULT</th>
+            <th>COMMENT</th>
+        </tr>
+                    <tr>
+                <td>1</td>
+                <td>email</td>
+                <td>string</td>
+                <td class="right">255</td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center">◯</td>
+                <td class="center">-</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>2</td>
+                <td>token</td>
+                <td>string</td>
+                <td class="right">255</td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center">◯</td>
+                <td class="center">-</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>3</td>
+                <td>created_at</td>
+                <td>datetime</td>
+                <td class="right"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center">-</td>
+                <td></td>
+            </tr>
+            </table>
+</div>
+    
+            <div>
+    <h3>Indexes Information</h3>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>INDEX NAME</th>
+            <th>COLUMNS</th>
+            <th>UNIQUE</th>
+        </tr>
+                    <tr>
+                <td>1</td>
+                <td>password_resets_email_index</td>
+                <td>email</td>
+                <td class="center"></td>
+            </tr>
+            </table>
+</div>
+    
+    <div>
+        <a href="#top">top</a>
+    </div>
+
+
+    <hr>
+
+    <div>
+        <h2><a id="personal_access_tokens">personal_access_tokens</a></h2>
+    </div>
+
+    <div>
+    <h3>Table Information</h3>
+    <table>
+        <tr>
+            <th>RDBMS</th>
+            <td>dd_dev_db</td>
+        </tr>
+        <tr>
+            <th>Table Name</th>
+            <td>personal_access_tokens</td>
+        </tr>
+        <tr>
+            <th>Options</th>
+            <td>
+                                    Engine: InnoDB<br />
+                                                    Collation: utf8mb4_unicode_ci<br />
+                                                    Charset: utf8mb4<br />
+                                                    Comment: 
+                            </td>
+        </tr>
+    </table>
+</div>
+
+    <div>
+    <h3>Columns Information</h3>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>COLUMN</th>
+            <th>TYPE</th>
+            <th>Length</th>
+            <th>UNSIGNED</th>
+            <th>PRIMARY KEY</th>
+            <th>FOREIGN KEY</th>
+            <th>AUTOINCREMENT</th>
+            <th>NOT NULL</th>
+            <th>DEFAULT</th>
+            <th>COMMENT</th>
+        </tr>
+                    <tr>
+                <td>1</td>
+                <td>id</td>
+                <td>bigint</td>
+                <td class="right"></td>
+                <td class="center"></td>
+                <td class="center">◯</td>
+                <td class="center"></td>
+                <td class="center">◯</td>
+                <td class="center">◯</td>
+                <td class="center">-</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>2</td>
+                <td>tokenable_type</td>
+                <td>string</td>
+                <td class="right">255</td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center">◯</td>
+                <td class="center">-</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>3</td>
+                <td>tokenable_id</td>
+                <td>bigint</td>
+                <td class="right"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center">◯</td>
+                <td class="center">-</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>4</td>
+                <td>name</td>
+                <td>string</td>
+                <td class="right">255</td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center">◯</td>
+                <td class="center">-</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>5</td>
+                <td>token</td>
+                <td>string</td>
+                <td class="right">64</td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center">◯</td>
+                <td class="center">-</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>6</td>
+                <td>abilities</td>
+                <td>text</td>
+                <td class="right">65535</td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center">-</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>7</td>
+                <td>last_used_at</td>
+                <td>datetime</td>
+                <td class="right"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center">-</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>8</td>
+                <td>created_at</td>
+                <td>datetime</td>
+                <td class="right"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center">-</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>9</td>
+                <td>updated_at</td>
+                <td>datetime</td>
+                <td class="right"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center">-</td>
+                <td></td>
+            </tr>
+            </table>
+</div>
+    
+            <div>
+    <h3>Indexes Information</h3>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>INDEX NAME</th>
+            <th>COLUMNS</th>
+            <th>UNIQUE</th>
+        </tr>
+                    <tr>
+                <td>1</td>
+                <td>personal_access_tokens_token_unique</td>
+                <td>token</td>
+                <td class="center">◯</td>
+            </tr>
+                    <tr>
+                <td>2</td>
+                <td>personal_access_tokens_tokenable_type_tokenable_id_index</td>
+                <td>tokenable_type , tokenable_id</td>
+                <td class="center"></td>
+            </tr>
+                    <tr>
+                <td>3</td>
+                <td>PRIMARY</td>
+                <td>id</td>
+                <td class="center">◯</td>
+            </tr>
+            </table>
+</div>
+    
+    <div>
+        <a href="#top">top</a>
+    </div>
+
+
+    <hr>
+
+    <div>
+        <h2><a id="users">users</a></h2>
+    </div>
+
+    <div>
+    <h3>Table Information</h3>
+    <table>
+        <tr>
+            <th>RDBMS</th>
+            <td>dd_dev_db</td>
+        </tr>
+        <tr>
+            <th>Table Name</th>
+            <td>users</td>
+        </tr>
+        <tr>
+            <th>Options</th>
+            <td>
+                                    Engine: InnoDB<br />
+                                                    Collation: utf8mb4_unicode_ci<br />
+                                                    Charset: utf8mb4<br />
+                                                    Comment: 
+                            </td>
+        </tr>
+    </table>
+</div>
+
+    <div>
+    <h3>Columns Information</h3>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>COLUMN</th>
+            <th>TYPE</th>
+            <th>Length</th>
+            <th>UNSIGNED</th>
+            <th>PRIMARY KEY</th>
+            <th>FOREIGN KEY</th>
+            <th>AUTOINCREMENT</th>
+            <th>NOT NULL</th>
+            <th>DEFAULT</th>
+            <th>COMMENT</th>
+        </tr>
+                    <tr>
+                <td>1</td>
+                <td>id</td>
+                <td>bigint</td>
+                <td class="right"></td>
+                <td class="center"></td>
+                <td class="center">◯</td>
+                <td class="center"></td>
+                <td class="center">◯</td>
+                <td class="center">◯</td>
+                <td class="center">-</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>2</td>
+                <td>name</td>
+                <td>string</td>
+                <td class="right">255</td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center">◯</td>
+                <td class="center">-</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>3</td>
+                <td>email</td>
+                <td>string</td>
+                <td class="right">255</td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center">◯</td>
+                <td class="center">-</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>4</td>
+                <td>email_verified_at</td>
+                <td>datetime</td>
+                <td class="right"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center">-</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>5</td>
+                <td>password</td>
+                <td>string</td>
+                <td class="right">255</td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center">◯</td>
+                <td class="center">-</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>6</td>
+                <td>remember_token</td>
+                <td>string</td>
+                <td class="right">100</td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center">-</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>7</td>
+                <td>created_at</td>
+                <td>datetime</td>
+                <td class="right"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center">-</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>8</td>
+                <td>updated_at</td>
+                <td>datetime</td>
+                <td class="right"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center"></td>
+                <td class="center">-</td>
+                <td></td>
+            </tr>
+            </table>
+</div>
+    
+            <div>
+    <h3>Indexes Information</h3>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>INDEX NAME</th>
+            <th>COLUMNS</th>
+            <th>UNIQUE</th>
+        </tr>
+                    <tr>
+                <td>1</td>
+                <td>PRIMARY</td>
+                <td>id</td>
+                <td class="center">◯</td>
+            </tr>
+                    <tr>
+                <td>2</td>
+                <td>users_email_unique</td>
+                <td>email</td>
+                <td class="center">◯</td>
+            </tr>
+            </table>
+</div>
+    
+    <div>
+        <a href="#top">top</a>
+    </div>
+
+
+    <hr>
+    published at: 2022-06-14 11:08:25
+</div>
+</body>
+</html>
