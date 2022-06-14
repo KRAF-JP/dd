@@ -1,6 +1,8 @@
 
 @foreach($tables as $key => $table)
+
     <hr>
+
     <div>
         <h2><a id="{{$table['name']}}">{{$table['name']}}</a></h2>
     </div>
@@ -17,5 +19,8 @@
         @include('dd.html.table-indexes')
     @endif
 
-    <a href="#top">top</a>
+    <div>
+        <a href="#top">top</a>
+    </div>
+
 @endforeach

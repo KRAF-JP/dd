@@ -1,11 +1,10 @@
 <div>
-    <a id="top"><h1>Tables</h1></a>
+    <h1><a id="top">Tables</a></h1>
 </div>
 <div>
     <table>
         <tr>
-            <th>#
-            </td>
+            <th>#</th>
             <th>Table Name</th>
             <th>Comment</th>
         </tr>
