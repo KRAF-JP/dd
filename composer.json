@@ -20,5 +20,12 @@
         "psr-4": {
             "Krafjp\\Dd\\": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Krafjp\\Dd\\DdServiceProvider"
+            ]
+        }
     }
 }
