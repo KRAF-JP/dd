@@ -9,6 +9,7 @@ use Exception;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Schema;
 use InvalidArgumentException;
 use League\HTMLToMarkdown\HtmlConverter;
 use League\HTMLToMarkdown\Converter\TableConverter;
@@ -70,43 +71,50 @@ class DdGenerateCommand extends Command
 
 
     /**
-     * @throws \Doctrine\DBAL\Exception | InvalidArgumentException | QueryException
+     * @throws InvalidArgumentException | QueryException
      */
     protected function generateDocument(?string $conn): void
     {
-        $schema = DB::connection($conn)->getDoctrineSchemaManager();
-        $databaseName = '';
-        foreach ($schema->listDatabases() as $database) {
-            if ($database !== 'information_schema') {
-                $databaseName = $database;
-                break;
-            }
-        }
+        $databaseName = DB::connection($conn)->getDatabaseName();
         $tables = [];
-        foreach ($schema->listTables() as $table) {
-            $foreignKeys = $table->getForeignKeys();
+        foreach (Schema::getTables() as $table) {
+            $foreignKeys = Schema::getForeignKeys($table['name']);
             $localColumns = [];
             $fKeys = [];
             if ($foreignKeys) {
                 foreach ($foreignKeys as $key => $fk) {
                     $fKeys[] = [
-                        'keyName' => $key,
-                        'localColumn' => $fk->getLocalColumns(),
-                        'foreignTableName' => $fk->getForeignTableName()
+                        'keyName' => $fk['name'],
+                        'localColumn' => $fk['columns'],
+                        'foreignTableName' => $fk['foreign_table']
                     ];
-                    $localColumns = [...$localColumns, $fk->getLocalColumns()[0]];
+                    $localColumns = [...$localColumns, $fk['columns'][0]];
                 }
             }
 
+            $indexes = Schema::getIndexes($table['name']);
+            $primaryKeys = [];
+            foreach ($indexes as $key => $index) {
+                if ($index['primary']) {
+                    $primaryKeys[] = $index['columns'][0];
+                }
+            }
+            $columns = Schema::getColumns($table['name']);
+            foreach ($columns as $key => $column) {
+                $columns[$key]['unsigned'] = str_contains($column['type'], 'unsigned');
+                preg_match('/\(([0-9]+)\)/', $column['type'], $length);
+                $columns[$key]['length'] = $length[1] ?? '';
+                $columns[$key]['default'] = $columns[$key]['default'] !== 'NULL' ? $columns[$key]['default'] : null;
+            }
             $tables[] = [
-                'name' => $table->getName(),
-                'comment' => $table->getComment(),
-                'columns' => $table->getColumns(),
-                'options' => $table->getOptions(),
-                'primaryKeys' => $table->hasPrimaryKey() ? $table->getPrimaryKey()->getColumns() : [],
+                'name' => $table['name'],
+                'comment' => $table['comment'],
+                'columns' => $columns,
+                'options' => $table,
+                'primaryKeys' => $primaryKeys,
                 'foreignKeys' => $fKeys,
                 'localColumns' => $localColumns,
-                'indexes' => $table->getIndexes(),
+                'indexes' => $indexes,
             ];
         }
 
