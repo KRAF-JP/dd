@@ -10,9 +10,9 @@
         @foreach($table['indexes'] as $index)
             <tr>
                 <td>{{$loop->iteration}}</td>
-                <td>{{$index->getName()}}</td>
-                <td>{{implode(" , ", $index->getColumns())}}</td>
-                <td class="center">{{$index->isUnique() ? '◯' : ''}}</td>
+                <td>{{$index['name']}}</td>
+                <td>{{implode(" , ", $index['columns'])}}</td>
+                <td class="center">{{$index['unique'] ? '◯' : ''}}</td>
             </tr>
         @endforeach
     </table>

@@ -17,16 +17,16 @@
         @foreach($table['columns'] as $column)
             <tr>
                 <td>{{$loop->iteration}}</td>
-                <td>{{$column->getName()}}</td>
-                <td>{{$column->getType()->getName()}}</td>
-                <td class="right">{{$column->getLength() ? $column->getLength() : ''}}</td>
-                <td class="center">{{$column->getUnsigned() === 1 ? '◯' : ''}}</td>
-                <td class="center">{{ in_array($column->getName(), $table['primaryKeys'], true) ? '◯' : '' }}</td>
-                <td class="center">{{ in_array($column->getName(), $table['localColumns'], true) ? '◯' : '' }}</td>
-                <td class="center">{{$column->getAutoincrement() ? '◯' : ''}}</td>
-                <td class="center">{{$column->getNotnull() ? '◯' : ''}}</td>
-                <td class="center">{{$column->getDefault() ?? '-'}}</td>
-                <td>{{$column->getComment()}}</td>
+                <td>{{$column['name']}}</td>
+                <td>{{$column['type_name']}}</td>
+                <td class="right">{{$column['length']}}</td>
+                <td class="center">{{$column['unsigned'] ? '◯' : ''}}</td>
+                <td class="center">{{ in_array($column['name'], $table['primaryKeys'], true) ? '◯' : '' }}</td>
+                <td class="center">{{ in_array($column['name'], $table['localColumns'], true) ? '◯' : '' }}</td>
+                <td class="center">{{$column['auto_increment'] ? '◯' : ''}}</td>
+                <td class="center">{{$column['nullable'] ? '' : '◯'}}</td>
+                <td class="center">{{$column['default'] ?? '-'}}</td>
+                <td>{{$column['comment']}}</td>
             </tr>
         @endforeach
     </table>
